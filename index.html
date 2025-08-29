@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFHL API Tester</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>BFHL API Tester</h1>
+            <p class="subtitle">Test the BFHL API that processes arrays of mixed data and categorizes them into numbers (odd/even), alphabets, and special characters.</p>
+            
+            <div class="api-endpoint">
+                <label class="form-label">API Endpoint:</label>
+                <div class="endpoint-container">
+                    <input type="text" class="form-control endpoint-input" value="https://bfhltest-api.vercel.app/api/bfhl" readonly>
+                    <button class="btn btn--secondary btn--sm copy-btn" onclick="copyEndpoint()">Copy</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="input-section">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Input Data</h3>
+                        <p class="input-description">Enter comma-separated values. Mix of letters, numbers, and special characters are supported.</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="dataInput">Data (comma-separated):</label>
+                            <textarea class="form-control" id="dataInput" rows="3" placeholder="M,1,334,4,B,Z,a,7">M,1,334,4,B,Z,a,7</textarea>
+                        </div>
+
+                        <div class="example-presets">
+                            <p class="form-label">Try these examples:</p>
+                            <div class="preset-buttons">
+                                <button class="btn btn--outline btn--sm" onclick="loadPreset(0)">Example 1</button>
+                                <button class="btn btn--outline btn--sm" onclick="loadPreset(1)">Example 2</button>
+                                <button class="btn btn--outline btn--sm" onclick="loadPreset(2)">Example 3</button>
+                                <button class="btn btn--outline btn--sm" onclick="loadPreset(3)">Example 4</button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn--primary btn--large" id="testBtn" onclick="testAPI()">
+                            <span id="btnText">Test API</span>
+                            <div class="spinner" id="spinner" style="display: none;"></div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <!-- Results will be dynamically inserted here -->
+            </section>
+        </main>
+
+        <!-- Notification -->
+        <div class="notification" id="notification" style="display: none;">
+            <span id="notificationText"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
