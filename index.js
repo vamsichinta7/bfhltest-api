@@ -1,11 +1,20 @@
 const express = require('express');
+const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware to parse JSON requests
 app.use(express.json());
 
-// POST /bfhl endpoint
+// Serve static files (HTML, CSS, JS)
+app.use(express.static('.'));
+
+// Serve the main page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// POST /bfhl endpoint (your API)
 app.post('/bfhl', (req, res) => {
     try {
         const { data } = req.body;
